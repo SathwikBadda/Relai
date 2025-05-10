@@ -1,0 +1,196 @@
+/* styles.css - Custom CSS for the Streamlit app */
+
+/* Main chat container styling */
+.chat-message {
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.chat-message.user {
+    background-color: #f0f2f6;
+}
+
+.chat-message.assistant {
+    background-color: #e6f7ff;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.avatar.user {
+    background-color: #6c757d;
+}
+
+.avatar.assistant {
+    background-color: #1e88e5;
+}
+
+.message-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Property card styling */
+.property-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.property-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.property-title {
+    font-weight: bold;
+    color: #1e88e5;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.property-detail {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3rem;
+}
+
+.property-label {
+    font-weight: bold;
+    min-width: 120px;
+    color: #555;
+}
+
+/* App background */
+.stApp {
+    background-color: #f8f9fa;
+}
+
+/* Title customization */
+.stTitle {
+    color: #2e4057;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    background-color: #f1f3f6;
+}
+
+/* Header styling */
+h1, h2, h3 {
+    color: #2e4057;
+}
+
+/* Chat input field styling */
+.stTextInput>div>div>input {
+    border-radius: 20px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+}
+
+/* Button styling */
+.stButton>button {
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.stButton>button:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
+}
+
+/* Spinner styling */
+.stSpinner>div>div {
+    border-color: #1e88e5 !important;
+}
+
+/* Property highlight badges */
+.property-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-new {
+    background-color: #4caf50;
+    color: white;
+}
+
+.badge-featured {
+    background-color: #ff9800;
+    color: white;
+}
+
+.badge-premium {
+    background-color: #9c27b0;
+    color: white;
+}
+
+/* Area information tooltips */
+.tooltip-area {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted #1e88e5;
+    cursor: help;
+}
+
+.tooltip-area .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-area:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .property-detail {
+        flex-direction: column;
+    }
+    
+    .property-label {
+        min-width: auto;
+        margin-bottom: 0.2rem;
+    }
+}
