@@ -1,5 +1,4 @@
-# config.py - Configuration file for the Real Estate Chatbot
-
+# config.py - Updated to include WhatsApp configuration
 import os
 from dotenv import load_dotenv
 
@@ -10,9 +9,17 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4-turbo-preview")  # Default to GPT-4 Turbo
 
-# Data Configuration - Use your specific path
-DEFAULT_DATA_PATH = "/Users/sathwik/Relai_agent/data/properties.csv"
-DATA_PATH = os.getenv("DATA_PATH", DEFAULT_DATA_PATH)
+# Data Configuration - Use SQLite database by default
+DEFAULT_CSV_PATH = "/Users/sathwik/Relai_agent/data/properties.csv"
+DEFAULT_DB_PATH = "/Users/sathwik/Relai_agent/data/properties.db"
+
+# Check if database exists, if not, fallback to CSV
+if os.path.exists(DEFAULT_DB_PATH):
+    DATA_PATH = os.getenv("DATA_PATH", DEFAULT_DB_PATH)
+    print(f"Using SQLite database at: {DATA_PATH}")
+else:
+    DATA_PATH = os.getenv("DATA_PATH", DEFAULT_CSV_PATH)
+    print(f"SQLite database not found, using CSV at: {DATA_PATH}")
 
 # Agent Configuration
 TEMPERATURE = float(os.getenv("TEMPERATURE", "0.7"))
@@ -24,54 +31,11 @@ DEBUG_MODE = os.getenv("DEBUG_MODE", "False").lower() == "true"
 # Streamlit Configuration
 STREAMLIT_PORT = int(os.getenv("STREAMLIT_PORT", "8501"))
 
-# Example .env file content - save this as .env
-ENV_FILE_TEMPLATE = """
-# OpenAI API Configuration
-OPENAI_API_KEY=your_openai_api_key_here
-MODEL_NAME=gpt-4-turbo-preview
+# WhatsApp Configuration
+WHATSAPP_API_TOKEN = os.getenv("WHATSAPP_API_TOKEN", "your_whatsapp_api_token")
+WHATSAPP_PHONE_NUMBER_ID = os.getenv("WHATSAPP_PHONE_NUMBER_ID", "your_phone_number_id")
+WHATSAPP_VERIFY_TOKEN = os.getenv("WHATSAPP_VERIFY_TOKEN", "your_verify_token")
+WHATSAPP_PORT = int(os.getenv("WHATSAPP_PORT", "5000"))
 
-# Data Configuration
-DATA_PATH=/Users/sathwik/Relai_agent/data/properties.csv
-
-# Agent Configuration
-TEMPERATURE=0.7
-MAX_TOKENS=4000
-
-# App Configuration
-DEBUG_MODE=False
-
-# Streamlit Configuration
-STREAMLIT_PORT=8501
-"""
-
-# Function to create .env file if it doesn't exist
-def create_env_file():
-    if not os.path.exists(".env"):
-        with open(".env", "w") as f:
-            f.write(ENV_FILE_TEMPLATE)
-        print("Created .env file template. Please edit it with your API keys.")
-        return False
-    return True
-
-# Function to check if configuration is valid
-def validate_config():
-    if not OPENAI_API_KEY or OPENAI_API_KEY == "your_openai_api_key_here":
-        print("Error: OPENAI_API_KEY not set. Please update your .env file.")
-        return False
-    
-    if not os.path.exists(DATA_PATH):
-        print(f"Error: Data file not found at {DATA_PATH}")
-        print(f"Please make sure your CSV file exists at this location.")
-        return False
-    
-    return True
-
-if __name__ == "__main__":
-    # This allows running this file directly to check configuration
-    if create_env_file():
-        if validate_config():
-            print("Configuration is valid!")
-        else:
-            print("Configuration is invalid. Please fix the issues above.")
-    else:
-        print("Please update the .env file with your settings and run again.")
+# Application Mode - "streamlit" or "whatsapp" or "both"
+APP_MODE = os.getenv("APP_MODE", "both")

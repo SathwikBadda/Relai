@@ -27,7 +27,7 @@ class TestPropertyTools(unittest.TestCase):
             'Configurations': ['3BHK, 4BHK', '1BHK, 2BHK', '3BHK, 4BHK, 5BHK', '2BHK, 3BHK, 4BHK', '1BHK, 2BHK'],
             'MinSizeSqft': [1500, 600, 2000, 1200, 500],
             'MaxSizeSqft': [2500, 1000, 3500, 2000, 900],
-            'PricePersqft': [8000, 4000, 7000, 6000, 3500]
+            'PricePerSqft': [8000, 4000, 7000, 6000, 3500]
         })
         
         # Create PropertyRecommendationTools instance

@@ -28,7 +28,7 @@ class TestRealEstateAgent(unittest.TestCase):
             'Configurations': ['2BHK, 3BHK', '3BHK, 4BHK', '2BHK, 3BHK, 4BHK'],
             'MinSizeSqft': [1000, 1500, 1200],
             'MaxSizeSqft': [1500, 2500, 2000],
-            'PricePersqft': [5000, 7000, 6000]
+            'PricePerSqft': [5000, 7000, 6000]
         })
         
         # Create property tools

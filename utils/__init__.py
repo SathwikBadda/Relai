@@ -1,10 +1,7 @@
-# utils/__init__.py - Package initialization file
+# Create utils/__init__.py
+# utils/__init__.py - Initialize the utils package
 
-from utils.property_tools import PropertyRecommendationTools
+# Import necessary functions 
 from utils.data_loader import load_property_data, sample_dataset
 
-__all__ = [
-    'PropertyRecommendationTools',
-    'load_property_data',
-    'sample_dataset'
-]
+# This file allows Python to recognize the utils directory as a package
